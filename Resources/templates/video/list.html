@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbs = [
+    ['name' => 'Видео']
+    ] %}
+    {% parent %}
+{% endblock %}
+
+{% block content %}
+    <div class="b-wrapper">
+        <div class="b-row">
+            <div class="b-col b-col_small_12">
+                <h1 class="b-heading">Видео</h1>
+
+                <div class="b-block-grid b-block-grid_small_3">
+                    {% for video in videos %}
+                        <div class="b-block-grid__item">
+                            <div class="b-video__item b-embed"
+                                 style="background-image: url({{ embed_video_thumb(video.source)|safe }})"
+                                 data-id="{{ embed_video_id(video.source)|safe }}">
+                                <div class="b-video__icon"></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

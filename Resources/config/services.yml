@@ -1,0 +1,32 @@
+services:
+    mindy.bundle.video.form.video_admin:
+        class: Mindy\Bundle\VideoBundle\Form\Admin\VideoForm
+        arguments:
+            - '@mindy.bundle.video.factory'
+        tags:
+            - { name: form.type }
+
+    mindy.bundle.video.admin.video:
+        class: Mindy\Bundle\VideoBundle\Admin\VideoAdmin
+        tags:
+            - { name: admin.admin, slug: video_video }
+
+    mindy.bundle.video.admin.category:
+        class: Mindy\Bundle\VideoBundle\Admin\CategoryAdmin
+        tags:
+            - { name: admin.admin, slug: video_category }
+
+    mindy.bundle.video.factory:
+        class: Mindy\Bundle\VideoBundle\VideoProvider\Factory
+
+    mindy.bundle.video.video_provider.youtube:
+        class: Mindy\Bundle\VideoBundle\VideoProvider\YoutubeVideoProvider
+        tags:
+            - { name: video.provider }
+
+    mindy.bundle.video.template_library.video:
+        class: Mindy\Bundle\VideoBundle\Library\VideoLibrary
+        arguments:
+            - '@mindy.bundle.video.factory'
+        tags:
+            - { name: template.library }

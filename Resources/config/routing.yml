@@ -1,0 +1,5 @@
+video_video_list:
+    path: /
+    defaults:
+        _controller: VideoBundle:Video:list
+    methods: [ GET ]
